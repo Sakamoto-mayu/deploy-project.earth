@@ -32,6 +32,7 @@ export default function Farmers() {
 
   // useSWRで取得したデータ（result.data）と、データの個数を最大値とする配列(result.pageNumberArr)
   const data = result.data;
+  console.log("data", data);
   const pageNumberArr = result.pageNumberArr;
   if (error) return "エラーが発生しました";
   if (data.length !== 0) {
@@ -88,18 +89,18 @@ export default function Farmers() {
         {/* ページング機能 */}
         <>
           <ul className={styles.pagingButtons}>
-            {pageNumberArr.map((pagingPageNumber: number) => {
+            {pageNumberArr.map((pagingNumber: number) => {
               return (
-                <li key={pagingPageNumber}>
+                <li key={pagingNumber} className={styles.pagingButton}>
                   <button
                     onClick={() => {
                       router.push(
-                        `/farmers?search=${search}&page=${pagingPageNumber}`
+                        `/farmers?search=${search}&page=${pagingNumber}`
                       );
                     }}
-                    className={styles.pagingNumberButton}
+                    className={styles.pagingButtonNumber}
                   >
-                    {pagingPageNumber}
+                    {pagingNumber}
                   </button>
                 </li>
               );

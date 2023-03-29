@@ -64,8 +64,17 @@
   display: flex;
   /* flex-wrap: wrap; */
   list-style-type: none;
+  margin: 0% 0% 0% 93%;
+
 }
 
-.pagingNumberButton {
-  padding: 1%;
+.pagingButtonNumber {
+  padding: 30%;
+  margin: 30%;
+  font-size: 120%;
+}
+
+.pagingButton {
+  padding: 4.5%;
+
 }

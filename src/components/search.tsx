@@ -7,7 +7,11 @@ export default function Search() {
   const [search, setSearch] = useState("");
   const handleSubmit = function (event: SyntheticEvent) {
     event.preventDefault();
-    const searchWords = search.toLowerCase();
+    // 大文字で入力された場合、小文字に変換
+    const searchWordsToLowerCase = search.toLowerCase();
+    // 前後の空白があれば削除
+    const searchWords = searchWordsToLowerCase.trim();
+    // エンコード
     const uri = encodeURI(searchWords);
     router.push(`/farmers?search=${uri}&page=1`);
   };
