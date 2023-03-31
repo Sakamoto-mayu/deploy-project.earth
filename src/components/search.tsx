@@ -35,6 +35,8 @@ export default function Search() {
     setOptipns(textsearch);
   }
 
+  console.log(options);
+
   const handleChange = (word: any) => {
     let text = word.target.value;
     let escape = /\\/;

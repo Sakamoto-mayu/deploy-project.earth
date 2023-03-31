@@ -1,7 +1,8 @@
 --@block
+DROP TABLE IF EXISTS api.suggest;
 CREATE TABLE api.suggest (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
+    text TEXT NOT NULL,
     searchtext TEXT
 );
 GRANT SELECT ON api.suggest TO web_anon;
@@ -9,7 +10,7 @@ GRANT ALL ON api.suggest to api_user;
 
 
 --@block
-INSERT INTO api.suggest (id,name,searchtext) VALUES
+INSERT INTO api.suggest (id,text,searchtext) VALUES
 (1,'人参','人参,にんじん,ニンジン,carrot,ninzin'),
 (2,'キャベツ','きゃべつ,キャベツ,cabbage,kyabetu,kyabetsu'),
 (3,'トマト','とまと,トマト,tomato'),
