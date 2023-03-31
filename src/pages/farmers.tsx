@@ -17,9 +17,6 @@ export default function Farmers() {
     // console.log("useEffect");
   }, [page]);
 
-  console.log("page", page);
-  console.log("pageNumber", pageNumber);
-
   const {
     data: result,
     error,
