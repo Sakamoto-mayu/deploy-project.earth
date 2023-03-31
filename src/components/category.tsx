@@ -13,7 +13,6 @@ export default function Category() {
   if (error) return <div>エラーです</div>;
   if (!data) return <div>データがありません</div>;
   // データ確認用
-  console.log("カテゴリー", data);
 
   // 試し１：Searchコンポーネントにpropsで渡して検索できないかな？
   // function moveSearch() {

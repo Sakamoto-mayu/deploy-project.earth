@@ -4,7 +4,6 @@ import styles from "../styles/login.module.css";
 import FetchOfPost from "@/lib/fetch_of_post";
 
 export default function User_register() {
-  // 成功パターン
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,26 +12,46 @@ export default function User_register() {
   const [prefecture, setPrefecture] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
+  const [duplicateEmail, setDuplicateEmail] = useState(false);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    // emailの重複チェック
-
-    //以下fetch
-    //fetchのoptionで使うdata
-    const data: {} = {
-      name: name,
+    // emailを先にチェックする
+    const emailData = {
       email: email,
-      password: password,
-      zipcode: zipcode,
-      prefecture: prefecture,
-      city: city,
-      address: address,
     };
-    // FetchOfPostで関数の共通化
-    const result = await FetchOfPost(data, "users");
-    if (result.length === 1) {
-      router.replace("/login");
+    const checkEmail = await FetchOfPost(emailData, "checkEmail");
+    console.log(checkEmail);
+    if (checkEmail.length > 1) {
+      setDuplicateEmail(true);
+    } else if (checkEmail.length === 0) {
+      // 以下fetch
+      // fetchのoptionで使うdata
+      const data: {} = {
+        name: name,
+        email: email,
+        password: password,
+        zipcode: zipcode,
+        prefecture: prefecture,
+        city: city,
+        address: address,
+      };
+      // FetchOfPostで関数の共通化
+      //空欄があったらfetchしない
+      if (
+        name &&
+        email &&
+        password &&
+        zipcode &&
+        prefecture &&
+        city &&
+        address
+      ) {
+        const result = await FetchOfPost(data, "users");
+        if (result.length === 1) {
+          router.replace("/login");
+        }
+      }
     }
   };
 
@@ -77,6 +96,11 @@ export default function User_register() {
                       placeholder="@example.com"
                     ></input>
                     {!email && <p className={styles.alert}>入力してください</p>}
+                    {duplicateEmail && (
+                      <p className={styles.alert}>
+                        メールアドレスが重複しています
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ const loginuser_cartPage = () => {
     let storage: any = [];
     for (let i = 0; i < localStorage.length; i++) {
       let num = localStorage.key(i);
-      if (num !== "ally-supports-cache" && num !== "category") {
+      if (Number(num) > 0) {
         let test: any = localStorage.getItem(`${num}`);
         test = JSON.parse(test);
         for (let i = 1; i <= test[0].quantity; i++) {

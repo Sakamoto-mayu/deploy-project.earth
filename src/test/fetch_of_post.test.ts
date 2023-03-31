@@ -99,7 +99,7 @@ const userData: UserData = {
 test("check returnValue", async () => {
   (global as any).fetch = jest.fn<() => Promise<{}>>().mockResolvedValue({
     status: 200,
-    // .jsonはメソッドなのでjson(){}にする。//なぜresponse.json()ではだめ？
+    // .jsonはメソッドなのでjson(){}にする。jsonはただのfunction名
     async json() {
       return [
         //...userの値＋idも含めて使いまわせるように//これどうやるの？

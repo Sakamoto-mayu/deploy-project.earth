@@ -19,11 +19,12 @@ export default function Login() {
     };
     // FetchOfPostで関数の共通化
     const result = await FetchOfPost(data, "login");
+    console.log("ログインリザルト", result);
 
-    if (result.length < 1 || result === "") {
+    if (result === "データが見つかりませんでした") {
       router.push("/login");
       setError(true);
-    } else {
+    } else if (result.length === 1) {
       router.push("/");
     }
   };

@@ -14,31 +14,46 @@ export const Slider = () => {
         }}
       >
         <SplideSlide>
-          <Image
-            className="slide-img"
-            src="/coverImages/cover2.jpg"
-            alt="かわいい猫の画像 part1"
-            width={1920}
-            height={600}
-          ></Image>
+          <div className="img-box">
+            <Image
+              className="slide-img"
+              src="/coverImages/cover2.jpg"
+              alt="かわいい猫の画像 part1"
+              fill
+              sizes="100vw"
+              style={{
+                objectPosition: "left center",
+              }}
+            />
+          </div>
         </SplideSlide>
         <SplideSlide>
-          <Image
-            className="slide-img"
-            src="/coverImages/cover1.jpg"
-            alt="かわいい猫の画像 part2"
-            width={1920}
-            height={600}
-          ></Image>
+          <div className="img-box">
+            <Image
+              className="slide-img"
+              src="/coverImages/cover1.jpg"
+              alt="かわいい猫の画像 part2"
+              fill
+              sizes="100vw"
+              style={{
+                objectPosition: "left center",
+              }}
+            />
+          </div>
         </SplideSlide>
         <SplideSlide>
-          <Image
-            className="slide-img"
-            src="/coverImages/cover3.jpg"
-            alt="かわいい猫の画像 part3"
-            width={1920}
-            height={600}
-          ></Image>
+          <div className="img-box">
+            <Image
+              className="slide-img"
+              src="/coverImages/cover3.jpg"
+              alt="かわいい猫の画像 part3"
+              fill
+              sizes="100vw"
+              style={{
+                objectPosition: "left center",
+              }}
+            />
+          </div>
         </SplideSlide>
       </Splide>
 
@@ -52,6 +67,11 @@ export const Slider = () => {
         }
         .wpaw-slider.wpaw-slider__item {
           min-height: 540px !important;
+        }
+        .img-box {
+          position: relative;
+          width: 1920px;
+          height: 600px;
         }
       `}</style>
     </>

@@ -1,27 +1,21 @@
-//ここからpostgrestに送る
-//リクエスト受け取ったものが正しいか確認
-
 import type { NextApiRequest, NextApiResponse } from "next";
-
-type Data = {
-  name: string;
-};
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse
 ) {
-  const url = `${process.env.DB_URL}/cartitems?user_id=eq.${req.body.user_id}&item_id=eq.${req.body.item_id}`;
+  const { email } = req.body;
+  const url = `${process.env.DB_URL}/users?email=eq.${email}`;
   const options = {
-    method: "DELETE",
+    method: "GET",
     headers: {
-      "Content-Type": "application/json",
-      Prefer: "return=representation",
       apikey: `${process.env.DB_KEY}`,
       Authorization: `Bearer ${process.env.DB_KEY}`,
+      "Content-Type": "application/json",
     },
   };
   const response = await fetch(url, options);
   const data = await response.json();
+  //   console.log(data);
   res.status(200).json(data);
 }

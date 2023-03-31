@@ -9,6 +9,7 @@
 
 import type { NextApiRequest, NextApiResponse } from "next";
 import loginFetch from "@/pages/api/login";
+import { json } from "stream/consumers";
 
 // DBのモックを作る。分岐をする。ifでtrueなら成功返す。falseなら失敗返す。
 // reqで送る値を変えて検査する。
@@ -51,15 +52,15 @@ describe("test loginFetch関数", () => {
         // 以下promiseの内容
         status: 200,
         async json() {
-          return { ...mockData };
+          return [{ ...mockData }];
         },
       });
     } else {
       (global as any).fetch = jest.fn().mockRejectedValue({
         async json() {
-          return {
-            error: "エラーです",
-          };
+          // エラーパターンは失敗する。本番では一致するユーザーがいなくても空の[]が帰ってくるが、
+          // テストだと[]が返ってくる前に失敗しているため？エラーメッセージでなくundefinedが返ってくる。
+          return [];
         },
       });
     }
@@ -73,11 +74,11 @@ describe("test loginFetch関数", () => {
       req.body.email === mockData.email &&
       req.body.password === mockData.password
     ) {
-      expect(res.json.mock.lastCall).toEqual([{ ...mockData }]);
+      expect(res.json.mock.lastCall[0]).toEqual([{ ...mockData }]);
       expect(res.status.mock.lastCall).toEqual([200]);
     } else {
-      expect(res.json.mock.lastCall).toEqual(["エラーです"]);
-      expect(res.status.mock.lastCall).toEqual([500]);
+      expect(res.json.mock.lastCall).toEqual(["データが見つかりませんでした"]);
+      expect(res.status.mock.lastCall).toEqual([400]);
     }
   });
 });

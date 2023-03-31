@@ -85,6 +85,90 @@
   line-height: 3rem;
 }
 
+/* section3 */
+.sec3 {
+  position: relative;
+  width: 90vw;
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 2rem auto;
+}
+.sec3 h2 {
+  font-size: 2.8rem;
+  border-bottom: 3px solid #000;
+}
+.sec3_ImageBox {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+  margin: 1rem auto;
+}
+.otherItems {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+  text-align: center;
+}
+.otherItem {
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 1;
+}
+
+.otherItem::before {
+  content: '';
+  background-color: black;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease-in;
+}
+.otherItem div,
+.otherItem p {
+  position: relative;
+}
+.otherItem div::before {
+  content: '';
+  background-color: black;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.7s ease-out;
+}
+.otherItem .mask {
+	width:			100%;
+	height:			100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	position:		absolute;
+  font-size: 2rem;
+  letter-spacing: 0.15rem;
+	top:			0;
+	left:			0;
+	opacity:		0;
+	background-color:	rgba(0,0,0,0.4);	
+	-webkit-transition:	all 0.2s ease;
+	transition:		all 0.2s ease;
+}
+.otherItem:hover .mask {
+	opacity:		1;	
+}
+
+
+
+/* 商品詳細 ------------------------------- */
 /* section2 */
 .sec2 {
   position: relative;
@@ -105,7 +189,7 @@
   height: 35rem;
 }
 .sec2_itemSelect {
-  display: flex;
+    display: flex;
     flex-direction: column;
     font-size: 1.5rem;
     width: 20rem;
@@ -113,6 +197,7 @@
     position: relative;
     padding: 1rem;
     align-items: center;
+    color: white;
 }
 .sec2_itemSelect::before {
   content: '';
@@ -125,10 +210,10 @@
   bottom: 0;
   transition: all 0.3s ease-in;
 }
-.sec2_itemSelect:hover::before {
+/* .sec2_itemSelect:hover::before {
   content: '';
   opacity: 0;
-}
+} */
 .sec2_Image {
   position: relative;
   border-radius: 50%;
@@ -196,7 +281,7 @@
 }
 
 /* ホバーで背景黒 */
-.sec2_itemSelect:hover .nameBox::before,
+/* .sec2_itemSelect:hover .nameBox::before,
 .sec2_itemSelect:hover .priceBox::before,
 .sec2_itemSelect:hover .selectBox::before,
 .sec2_itemSelect:hover .buttonBox::before
@@ -209,7 +294,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-}
+} */
 
 .nameBox p,
 .priceBox p,
@@ -220,92 +305,16 @@
 }
 
 
-
-/* section3 */
-.sec3 {
-  position: relative;
-  width: 90vw;
-  text-align: center;
-  font-size: 1.4rem;
-  margin: 2rem auto;
-}
-.sec3 h2 {
-  font-size: 2.8rem;
-  border-bottom: 3px solid #000;
-}
-.sec3_ImageBox {
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
-  position: relative;
-  margin: 1rem auto;
-}
-.otherItems {
-  display: flex;
-  justify-content: space-around;
-  margin: 2rem auto;
-  text-align: center;
-}
-.otherItem {
-  width: 20rem;
-  height: 20rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  opacity: 1;
-}
-.otherItem::before {
-  content: '';
-  background-color: black;
-  opacity: 0.7;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: all 0.3s ease-in;
-}
-.otherItem:hover::before {
-  content: '';
-  opacity: 0;
-}
-.otherItem div,
-.otherItem p {
-  position: relative;
-}
-.otherItem div::before {
-  content: '';
-  background-color: black;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: all 0.7s ease-out;
-}
-.otherItem:hover div::before {
-  content: '';
-  opacity: 0.8;
-}
-
-
-/* ------------------------------- */
 .overlay{
   /*　画面全体を覆う設定　*/
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:100%;
-    background-color:rgba(0,0,0,0.5);
-  
-    /*　画面の中央に要素を表示させる設定　*/
+    height:100%;  
     display: flex;
     align-items: center;
     justify-content: center;
-  
   }
 
   .content{
@@ -313,11 +322,28 @@
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    z-index:2;
     color: #000;
-    opacity: 0.7;
-    width:40vw;
-    height: 40vh;
+    width: 100vw;
+    height: 100vh;
     padding: 1em;
-    background:#fff;
-  }
+    }
+
+    .content::before {
+      content: '';
+      background-color: black;
+      opacity: 0.5;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    
+    .contentClose {
+      position: absolute;
+      z-index: 2;
+      bottom: 5%;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }

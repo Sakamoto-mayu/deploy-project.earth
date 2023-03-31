@@ -8,9 +8,9 @@ export default async function FetchOfPost(data: {}, url: string) {
   };
 
   const response = await fetch(`/api/${url}`, options);
-  console.log(response);
+  console.log("fetchレスポンス", response);
   const result = await response.json();
-  console.log(result);
+  console.log("fetchリザルト", result);
   return result;
 }
 // async関数の戻り値は強制的promiseの形になる。

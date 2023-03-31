@@ -9,7 +9,6 @@ export default function NewFace() {
 
   if (error) return <div>エラーです</div>;
   if (!data) return <div>データがないです</div>;
-  console.log(data);
 
   return (
     <>

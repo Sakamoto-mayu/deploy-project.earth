@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { BreadCrumb } from "@/components/Breadcrumd/BreadCrumb";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
+      <BreadCrumb />
       <Component {...pageProps} />
       <Footer />
     </>
