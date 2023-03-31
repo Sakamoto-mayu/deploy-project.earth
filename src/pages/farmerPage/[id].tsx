@@ -109,7 +109,7 @@ export default function page(props: any) {
     }
   });
 
-  // 対象カテゴリーの商品取得
+  // // 対象カテゴリーの商品取得
   const itemfunction = () => {
     items = items.filter((e: any) => {
       return e.category_id === itemSelect;
@@ -120,7 +120,6 @@ export default function page(props: any) {
   //  その他関連商品クリックでの表示切り替え関数。
   const changeItem = (id: any) => {
     setitemSelect(id);
-    itemfunction();
   };
 
   // 下記JSX
@@ -155,34 +154,34 @@ export default function page(props: any) {
         <h2>商品一覧</h2>
         <div className={styles.otherItems}>
           {categoryItem.map((e: any, index) => {
-            if (e.category_id !== itemSelect) {
-              return (
-                <>
-                  <div
-                    className={styles.otherItem}
-                    key={e.id}
-                    onClick={() => {
-                      changeItem(e.category_id), setShow(true);
-                    }}
-                  >
-                    <div>
-                      <p>{categoryArr[index].name}の商品一覧へ</p>
-                    </div>
-
-                    <Image
-                      src={categoryArr[index].image}
-                      width={250}
-                      height={250}
-                      className={styles.sec3_ImageBox}
-                      alt={"野菜画像"}
-                    />
-                    <div className={styles.mask}>
-                      <div className={styles.caption}>CLICK</div>
-                    </div>
+            // if (e.category_id !== itemSelect) {
+            return (
+              <>
+                <div
+                  className={styles.otherItem}
+                  key={e.id}
+                  onClick={() => {
+                    changeItem(e.category_id), setShow(true);
+                  }}
+                >
+                  <div>
+                    <p>{categoryArr[index].name}の商品一覧へ</p>
                   </div>
-                </>
-              );
-            }
+
+                  <Image
+                    src={categoryArr[index].image}
+                    width={250}
+                    height={250}
+                    className={styles.sec3_ImageBox}
+                    alt={"野菜画像"}
+                  />
+                  <div className={styles.mask}>
+                    <div className={styles.caption}>CLICK</div>
+                  </div>
+                </div>
+              </>
+            );
+            // }
           })}
         </div>
       </section>

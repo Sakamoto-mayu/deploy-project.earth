@@ -16,10 +16,6 @@ export default function Complete() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        //↓全部のデータを取り扱いたい時
-        Prefer: "return=representation",
-        //↓更新したいならTOKEN設定
-        Authorization: `Bearer ${process.env["POSTGREST_API_TOKEN"]}`,
       },
       body: JSON.stringify(deleteParam),
     });

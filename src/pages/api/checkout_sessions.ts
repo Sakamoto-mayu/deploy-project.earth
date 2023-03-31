@@ -4,7 +4,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 export default async function handler(req: any, res: any) {
   if (req.method === "POST") {
     let items;
-    if (req.headers.referer === "http://localhost:3000/loginuserCartPage") {
+    if (req.headers.referer === `${process.env.STRIPE_CANCEL_URL}`) {
       items = JSON.parse(req.body.data);
     } else {
       items = req.body;
@@ -24,7 +24,7 @@ export default async function handler(req: any, res: any) {
         success_url: `${process.env.STRIPE_SUCCESS_URL}`,
         cancel_url: `${process.env.STRIPE_CANCEL_URL}`,
       });
-      if (req.headers.referer === "http://localhost:3000/loginuserCartPage") {
+      if (req.headers.referer === `${process.env.STRIPE_CANCEL_URL}`) {
         res.redirect(303, session.url);
       } else {
         res.status(200).json({ redirectUrl: session.url });
