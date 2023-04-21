@@ -1,11 +1,11 @@
 import styles from "@/styles/Home.module.css";
 import Image from "next/image";
 import Search from "@/components/search";
-import Record from "@/components/top-record";
+import Record from "@/components/Record";
 import Category from "@/components/category";
 import { useEffect, useState } from "react";
-import NewFace from "@/components/newface";
 import { Slider } from "@/components/slider";
+import NewFarmers from "@/components/NewFarmers";
 
 export default function Home() {
   const [cookie, setCookie] = useState<boolean>();
@@ -77,7 +77,7 @@ export default function Home() {
         </section>
 
         <section>
-          <NewFace />
+          <NewFarmers />
         </section>
       </main>
     </>

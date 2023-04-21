@@ -1,9 +1,9 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/login.module.css";
-import FetchOfPost from "@/lib/fetch_of_post";
+import FetchForPost from "@/lib/fetchForPost";
 
-export default function User_register() {
+export default function UserRegister() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ export default function User_register() {
     const emailData = {
       email: email,
     };
-    const checkEmail = await FetchOfPost(emailData, "checkEmail");
+    const checkEmail = await FetchForPost(emailData, "checkEmail");
     console.log(checkEmail);
     if (checkEmail.length > 1) {
       setDuplicateEmail(true);
@@ -47,7 +47,7 @@ export default function User_register() {
         city &&
         address
       ) {
-        const result = await FetchOfPost(data, "users");
+        const result = await FetchForPost(data, "users");
         if (result.length === 1) {
           router.replace("/login");
         }

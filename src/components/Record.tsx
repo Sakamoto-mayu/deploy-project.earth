@@ -34,7 +34,7 @@ export default function Record() {
     }
   }, []);
 
-  const { data, error } = useSWR<Farmer[]>(`/api/top-record`, fetcher);
+  const { data, error } = useSWR<Farmer[]>(`/api/getRecordApi`, fetcher);
   if (error) return <div>エラーです</div>;
   if (!data) return <div>データがありません</div>;
   console.log("履歴", data);
