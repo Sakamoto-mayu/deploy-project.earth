@@ -1,4 +1,4 @@
-export default async function FetchOfPost(data: {}, url: string) {
+export default async function FetchForPost(data: {}, url: string) {
   const options = {
     method: "POST",
     headers: {

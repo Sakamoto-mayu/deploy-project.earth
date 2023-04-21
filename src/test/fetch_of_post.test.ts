@@ -69,7 +69,7 @@
 
 import { render, screen, waitFor } from "@testing-library/react";
 import { expect, jest, test } from "@jest/globals";
-import FetchOfPost from "../lib/fetch_of_post";
+import FetchOfPost from "../lib/fetchForPost";
 
 type UserData = {
   name: string;

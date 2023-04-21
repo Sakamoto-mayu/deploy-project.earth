@@ -139,7 +139,7 @@ export default function Login() {
               </div>
             </form>
             <div className={styles.title}>新規会員登録はこちら</div>
-            <Link href={"/user_register/"}>
+            <Link href={"/useRegister/"}>
               <div className={styles.button}>
                 <button type="submit" className={styles.inner_button}>
                   新規会員登録をする

@@ -2,7 +2,7 @@ import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../styles/login.module.css";
-import FetchOfPost from "@/lib/fetch_of_post";
+import FetchForPost from "@/lib/fetchForPost";
 
 export default function Login() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function Login() {
       password: password,
     };
     // FetchOfPostで関数の共通化
-    const result = await FetchOfPost(data, "login");
+    const result = await FetchForPost(data, "login");
     console.log("ログインリザルト", result);
 
     if (result === "データが見つかりませんでした") {
@@ -76,7 +76,7 @@ export default function Login() {
             </form>
 
             <div className={styles.title}>新規会員登録はこちら</div>
-            <Link href={"/user_register/"} className={styles.link}>
+            <Link href={"/userRegister/"} className={styles.link}>
               <div className={styles.button}>
                 <button type="submit" className={styles.inner_button}>
                   新規会員登録をする

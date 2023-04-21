@@ -4,8 +4,8 @@ import Image from "next/image";
 import styles from "../styles/newface.module.css";
 import { fetcher } from "@/lib/fecher";
 
-export default function NewFace() {
-  const { data, error } = useSWR(`/api/newface`, fetcher);
+export default function NewFarmers() {
+  const { data, error } = useSWR(`/api/getNewFarmersApi`, fetcher);
 
   if (error) return <div>エラーです</div>;
   if (!data) return <div>データがないです</div>;
